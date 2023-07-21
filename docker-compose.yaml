@@ -1,0 +1,29 @@
+version: "3"
+services:
+  frontend:
+    image: frontend
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    networks:
+      - confessional-app
+  backend:
+    image: backend
+    ports:
+      - "3001:3001"
+    networks:
+      - confessional-app
+  mongo:
+    image: mongo:3.6.19-xenial
+    ports:
+      - "27017:27017"
+    networks:
+      - confessional-app
+    volumes:
+      - mongo-data:/data/db
+networks:
+  confessional-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local
