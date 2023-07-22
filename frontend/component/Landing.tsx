@@ -4,9 +4,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { BaseLayout, CardLayout, DisplayForm } from "../app/ui"
 import NoteCard, { CardProps } from "../app/ui/NoteCard"
 import { useSearchContext } from '@/context/SearchContext';
+import { useUpdateContext } from "@/context/ComponentUpdateContext";
 
 const Landing = () => {
   const { value } = useSearchContext();
+  const { isUpdated } = useUpdateContext();
   const [data, setData] = useState<CardProps[]>([])
   const [isLoading, setLoading] = useState<boolean>(false)
 
@@ -18,7 +20,7 @@ const Landing = () => {
         setData(data.data)
         setLoading(false)
       })
-  }, [value])
+  }, [value, isUpdated])
 
   if (data.length > 0) {
     return (
