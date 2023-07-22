@@ -3,8 +3,12 @@ import { Landing } from "../component";
 
 export default function Home() {
   return (
-    <SearchContextProvider>
-      <Landing />
-    </SearchContextProvider>
+    <Landing />
   )
 }
+
+{/* <SearchContextProvider>
+  <SearchContextProvider>
+   
+  </SearchContextProvider>
+</SearchContextProvider> */}
