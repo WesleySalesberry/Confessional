@@ -1,6 +1,6 @@
 "use client"
 
-import { Form } from "@/component"
+import Form from "@/component/Form"
 import React from "react"
 import { useState } from "react"
 
