@@ -9,9 +9,7 @@ interface IProviderProps {
 const SearchContextProvider = ({ children }: IProviderProps) => {
   const [value, setValue] = useState<string>('');
 
-  const addValue = (itm: string) => {
-    setValue(itm);
-  }
+  const addValue = (itm: string) => setValue(itm);
 
   return (
     <SearchContext.Provider

@@ -3,15 +3,17 @@ import React, { useState } from 'react';
 
 import Data from '../app/ui/Form/Data.json';
 import Message from './Message';
+import { useUpdateContext } from '@/context/ComponentUpdateContext';
 
 const FormComponent = () => {
+  const { updateState } = useUpdateContext();
+
   const [category, setCategory] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [body, setBody] = useState<string>('');
   const [message, setMessage] = useState<string>('')
   const [error, setError] = useState<string>('')
 
-  // Function to capitalize the first letter of a string
   const capitalizeFirstLetter = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
@@ -33,7 +35,7 @@ const FormComponent = () => {
       .then(response => response.json())
       .then(data => {
         setMessage(data.data);
-        console.log('POST request successful!');
+        updateState(true);
       })
       .catch(error => {
         setError(`Error while adding your confession:  ${error}`)
