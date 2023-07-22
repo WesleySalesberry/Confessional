@@ -6,9 +6,3 @@ export default function Home() {
     <Landing />
   )
 }
-
-{/* <SearchContextProvider>
-  <SearchContextProvider>
-   
-  </SearchContextProvider>
-</SearchContextProvider> */}
