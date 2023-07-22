@@ -1,3 +1,4 @@
+import React from "react"
 import { IBaseLayout } from "./BaseLayout";
 
 interface ICardLayout extends IBaseLayout { }

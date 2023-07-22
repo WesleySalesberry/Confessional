@@ -1,4 +1,4 @@
-import SearchContextProvider from "@/context/SearchContextProvider";
+import React from "react"
 import { Landing } from "../component";
 
 export default function Home() {

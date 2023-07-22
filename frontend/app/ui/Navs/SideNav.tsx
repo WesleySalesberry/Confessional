@@ -1,9 +1,10 @@
+import React from "react"
 import NavData from './NavData.json'
 import { useSearchContext } from '@/context/SearchContext';
 
 
 
-const SideNav: React.FC = () => {
+const SideNav = () => {
   const { addValue } = useSearchContext();
 
   return (
