@@ -1,11 +1,11 @@
-'use client'
-import React, { useState } from 'react';
+"use client"
+import React, { useState } from "react"
 
+import { useUpdateContext } from "@/context/ComponentUpdateContext";
 import Data from '../app/ui/Form/Data.json';
-import Message from './Message';
-import { useUpdateContext } from '@/context/ComponentUpdateContext';
+import Message from "./Message";
 
-const FormComponent = () => {
+const Form = () => {
   const { updateState } = useUpdateContext();
 
   const [category, setCategory] = useState<string>('');
@@ -50,7 +50,6 @@ const FormComponent = () => {
     setBody('')
     setCategory('')
   };
-
   return (
     <>
       {
@@ -65,22 +64,25 @@ const FormComponent = () => {
           :
           null
       }
-      <form onSubmit={handleSubmit} className="py-3 px-3 rounded bg-white">
-        <div className="my-3 bg-white rounded">
+      <form onSubmit={handleSubmit} className="container bg-white py-2 px-2 rounded shadow-lg">
+        <div className="my-3 bg-white">
           <select
             value={category}
             onChange={(evt) => setCategory(evt.target.value)}
-            className="bg-white rounded border border-gray-500 py-2 px-4 focus:outline-none"
+            className="bg-white rounded border border-gray-500 py-2 px-4 focus:outline-none w-full"
           >
             <option>Categories</option>
             {Data.map((itm) => (
-              <option key={itm.value} value={itm.value}>
+              <option
+                key={itm.value}
+                value={itm.value}
+              >
                 {capitalizeFirstLetter(itm.title)}
               </option>
             ))}
           </select>
         </div>
-        <div className="my-3 bg-white rounded">
+        <div>
           <input
             type="text"
             placeholder="Title"
@@ -89,27 +91,28 @@ const FormComponent = () => {
             className="bg-white rounded border border-gray-500 py-2 px-4 focus:outline-none w-full"
           />
         </div>
-        <div className="mb-3 bg-white rounded border border-gray-500">
-          <label htmlFor="confession" className="block">Confession</label>
+        <div>
+          <label htmlFor="confession" className="block border-b-2 ">Confession</label>
           <textarea
             id="confession"
             placeholder="Leave Your Confession here"
             value={body}
             onChange={(evt) => setBody(evt.target.value)}
-            className="bg-white rounded w-full p-2 focus:outline-none"
+            className="bg-white rounded border border-gray-500 w-full p-2"
           />
         </div>
-        <button
-          type="submit"
-          className={`font-bold py-2 px-4 mx-2 my-2 rounded w-full border-2
+        <div className="my-3">
+          <button
+            className={`font-bold py-3 px-3 rounded w-full border-2
           ${title !== '' && body !== '' && category !== '' ? 'bg-sky-500 hover:bg-sky-700 cursor-pointer' : 'bg-gray-500 cursor-not-allowed'}`}
-          disabled={category !== '' && title !== '' && body !== '' ? false : true}
-        >
-          Confess
-        </button>
+            disabled={category !== '' && title !== '' && body !== '' ? false : true}
+          >
+            Confess
+          </button>
+        </div>
       </form>
     </>
-  );
-};
+  )
+}
 
-export default FormComponent;
+export default Form;

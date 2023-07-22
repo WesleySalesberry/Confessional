@@ -1,3 +1,4 @@
+import React from "react"
 import SearchContextProvider from '@/context/SearchContextProvider'
 import './globals.css'
 import type { Metadata } from 'next'

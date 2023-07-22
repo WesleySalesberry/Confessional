@@ -1,60 +1,41 @@
 [
   {
-    "link": "/",
     "title": "all",
     "value": ""
   },
   {
-    "link": "/category",
-    "slug": "dream",
     "title": "a dream",
     "value": "dream"
   },
   {
-    "link": "/category",
-    "slug": "fantasies",
     "title": "a fantasies",
     "value": "fantasies"
   },
   {
-    "link": "/category",
-    "slug": "experience",
     "title": "first experience",
     "value": "experience"
   },
   {
-    "link": "/category",
-    "slug": "guilt",
     "title": "a guilt",
     "value": "guilt"
   },
   {
-    "link": "/category",
-    "slug": "lie",
     "title": "a lie",
     "value": "lie"
   },
   {
-    "link": "/category",
-    "slug": "pain",
     "title": "a pain",
     "value": "pain"
   },
   {
-    "link": "/category",
-    "slug": "random",
     "title": "random",
     "value": "random"
   },
   {
-    "link": "/category",
-    "slug": "truth",
     "title": "a truth",
     "value": "truth"
   },
   {
-    "link": "/category",
-    "slug": "other",
     "title": "other",
     "value": "other"
   }
