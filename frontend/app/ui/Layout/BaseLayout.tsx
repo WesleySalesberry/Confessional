@@ -1,3 +1,4 @@
+import React from "react"
 import SideNav from "../Navs/SideNav"
 
 export interface IBaseLayout {

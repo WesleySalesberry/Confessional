@@ -1,3 +1,4 @@
+import { useSearchContext } from '@/context/SearchContext';
 import React from 'react';
 import { RiEyeLine, RiChat3Line } from 'react-icons/ri';
 
@@ -11,7 +12,9 @@ export interface CardProps {
   comments: number;
 }
 
-const NoteCard: React.FC<CardProps> = ({ id, confession_id, category, title, body, views, comments }) => {
+const NoteCard = ({ id, category, title, body, views, comments }: CardProps) => {
+  const { addValue } = useSearchContext();
+
   const limitTextToWords = (text: string, wordCount: number) => {
     const words = text.split(' ');
     if (words.length > wordCount) {
@@ -28,13 +31,19 @@ const NoteCard: React.FC<CardProps> = ({ id, confession_id, category, title, bod
       className="flex flex-col bg-white shadow-lg rounded-lg p-4 mx-2 my-4 md:w-96">
       <div className="hidden md:flex md:justify-between mb-2">
         <h2 className="text-lg font-semibold mr-2">{title}</h2>
-        <div className="bg-blue-500 text-white px-2 py-1 rounded-full">
+        <div
+          className="bg-blue-500 text-white px-2 py-1 rounded-full cursor-pointer"
+          onClick={() => addValue(category)}
+        >
           {category}
         </div>
       </div>
       <div className="md:hidden mb-2">
         <h2 className="text-lg font-semibold mb-1">{title}</h2>
-        <div className="bg-blue-500 text-white text-center px-2 py-1 rounded-full mt-1 w-24">
+        <div
+          className="bg-blue-500 text-white text-center px-2 py-1 rounded-full mt-1 w-24 cursor-pointer"
+          onClick={() => addValue(category)}
+        >
           {category}
         </div>
       </div>
