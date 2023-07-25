@@ -9,7 +9,7 @@ import asyncHandler from 'express-async-handler'
  */
 export const allConfessions = asyncHandler(async (req, res) => {
   const { search, category, pageNumber } = req.query
-  const pageSize = 10;
+  const pageSize = 12;
   const page = Number(pageNumber) || 1
 
   let query: any;
