@@ -37,6 +37,7 @@ const Form = () => {
         if (data.error) {
           setError(data.error)
         }
+
         setMessage(data.data);
         updateState(true);
         console.warn(data.error)
@@ -53,21 +54,6 @@ const Form = () => {
     setTitle('')
     setBody('')
     setCategory('')
-
-    setTimeout(() => {
-      setMessage('')
-      setError('')
-    }, 3000)
-
-    setTimeout(() => {
-      setMessage('')
-      setError('')
-    }, 3000)
-
-    setTimeout(() => {
-      setMessage('')
-      setError('')
-    }, 3000)
 
     setTimeout(() => {
       setMessage('')
