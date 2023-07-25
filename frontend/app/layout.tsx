@@ -23,9 +23,6 @@ export default function RootLayout({ children, }: {
           <ModeContextProvider>
             <body>{children}</body>
           </ModeContextProvider>
-          <ModeContextProvider>
-            <body>{children}</body>
-          </ModeContextProvider>
         </UpdateContextProvider>
       </SearchContextProvider>
     </html>
