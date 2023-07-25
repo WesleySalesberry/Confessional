@@ -1,4 +1,6 @@
 import mongoose from 'mongoose'
+import slugify from 'slugify'
+
 const Schema = mongoose.Schema
 
 const ConfessionSchema = new Schema({
@@ -22,11 +24,25 @@ const ConfessionSchema = new Schema({
     required: [true, 'Submit the confession'],
     trim: true
   },
+  slug: {
+    type: String
+  },
   views: {
     type: Number
   }
 }, {
   timestamps: true
+})
+
+ConfessionSchema.pre('save', function (next) {
+  this.slug = slugify(`${this.title}, ${this.confession_id}`, {
+    lower: true,
+    replacement: '-',
+    remove: undefined,
+    trim: true
+  })
+
+  next()
 })
 
 const Confession = mongoose.model('Confession', ConfessionSchema)
