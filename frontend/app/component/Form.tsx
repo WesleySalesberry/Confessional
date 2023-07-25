@@ -58,6 +58,11 @@ const Form = () => {
       setMessage('')
       setError('')
     }, 3000)
+
+    setTimeout(() => {
+      setMessage('')
+      setError('')
+    }, 3000)
   };
   return (
     <>
@@ -73,8 +78,8 @@ const Form = () => {
           :
           null
       }
-      <form onSubmit={handleSubmit} className="container bg-white dark:bg-neutral-900 py-2 px-2 rounded shadow-lg">
-        <div className="my-3 bg-white rounded">
+      <form onSubmit={handleSubmit} className="container bg-white dark:bg-neutral-900 dark:bg-neutral-900 py-2 px-2 rounded shadow-lg">
+        <div className="my-3 bg-white rounded rounded">
           <select
             value={category}
             onChange={(evt) => setCategory(evt.target.value)}
@@ -93,6 +98,7 @@ const Form = () => {
         </div>
         <div>
           <label htmlFor="title" className="leading-7 text-sm text-gray-900 dark:text-violet-700">Title</label>
+          <label htmlFor="title" className="leading-7 text-sm text-gray-900 dark:text-violet-700">Title</label>
           <input
             type="text"
             placeholder="Title"
@@ -103,23 +109,25 @@ const Form = () => {
         </div>
         <div className="my-3">
           <label htmlFor="confession" className="leading-7 text-sm text-gray-900 dark:text-violet-700">Confession</label>
-          <textarea
-            id="confession"
-            placeholder="Leave Your Confession here"
-            value={body}
-            onChange={(evt) => setBody(evt.target.value)}
-            className="bg-white rounded border border-gray-500 w-full p-2"
-          />
-        </div>
-        <div className="my-3">
-          <button
-            className={`font-bold py-3 px-3 rounded w-full border-2
-          ${title !== '' && body !== '' && category !== '' ? 'bg-sky-500 hover:bg-sky-700 dark:bg-sky-700 dark:hover:bg-sky-500 cursor-pointer' : 'bg-gray-500 cursor-not-allowed'}`}
-            disabled={category !== '' && title !== '' && body !== '' ? false : true}
-          >
-            Confess
-          </button>
-        </div>
+          <div className="my-3">
+            <label htmlFor="confession" className="leading-7 text-sm text-gray-900 dark:text-violet-700">Confession</label>
+            <textarea
+              id="confession"
+              placeholder="Leave Your Confession here"
+              value={body}
+              onChange={(evt) => setBody(evt.target.value)}
+              className="bg-white rounded border border-gray-500 w-full p-2"
+            />
+          </div>
+          <div className="my-3">
+            <button
+              className={`font-bold py-3 px-3 rounded w-full border-2
+          ${title !== '' && body !== '' && category !== '' ? 'bg-sky-500 hover:bg-sky-700 dark:bg-sky-700 dark:hover:bg-sky-500 dark:bg-sky-700 dark:hover:bg-sky-500 cursor-pointer' : 'bg-gray-500 cursor-not-allowed'}`}
+              disabled={category !== '' && title !== '' && body !== '' ? false : true}
+            >
+              Confess
+            </button>
+          </div>
       </form>
     </>
   )
