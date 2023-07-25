@@ -36,11 +36,16 @@ const Form = () => {
         if (data.error) {
           setError(data.error)
         }
+        if (data.error) {
+          setError(data.error)
+        }
         setMessage(data.data);
         updateState(true);
+        console.warn(data.error)
       })
       .catch(error => {
         setError(`Error while adding your confession:  ${error}`)
+        console.error(error);
         console.error(error);
       });
   }
@@ -54,6 +59,7 @@ const Form = () => {
 
     setTimeout(() => {
       setMessage('')
+      setError('')
       setError('')
     }, 3000)
   };
