@@ -3,6 +3,7 @@ import SearchContextProvider from '@/context/SearchContextProvider'
 import './globals.css'
 import type { Metadata } from 'next'
 import UpdateContextProvider from '@/context/UpdateProvider'
+import ModeContextProvider from "@/context/ModeContextProvider"
 // import { Inter } from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -19,7 +20,9 @@ export default function RootLayout({ children, }: {
     <html lang="en">
       <SearchContextProvider>
         <UpdateContextProvider>
-          <body>{children}</body>
+          <ModeContextProvider>
+            <body>{children}</body>
+          </ModeContextProvider>
         </UpdateContextProvider>
       </SearchContextProvider>
     </html>
