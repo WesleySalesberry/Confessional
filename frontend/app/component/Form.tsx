@@ -55,6 +55,10 @@ const Form = () => {
 
     setTimeout(() => {
       setMessage('')
+    }, 3000)
+
+    setTimeout(() => {
+      setMessage('')
       setError('')
     }, 3000)
 
