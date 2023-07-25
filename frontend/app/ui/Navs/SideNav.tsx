@@ -8,13 +8,13 @@ const SideNav = () => {
   const { addValue } = useSearchContext();
 
   return (
-    <aside className={`sticky w-3/5 md:w-1/5 border-r-2 border-red-500 bg-slate-500 h-screen md:max-h-screen`}>
+    <aside className={`hidden md:block md:w-1/5 border-r-2 dark:text-sky-500 border-sky-500 dark:border-orange-800 bg-gray-300 dark:bg-sky-950   h-screen md:max-h-screen`}>
       <ul className="py-4">
         {
           NavData.map(itm => (
             <li
               key={itm.value}
-              className="px-4 py-2 font-bold cursor-pointer"
+              className="px-4 py-2 font-bold cursor-pointer hover:text-black hover:bg-sky-300 dark:hover:bg-zinc-700"
               onClick={() => addValue(itm.value)}
             >
               {itm.title}

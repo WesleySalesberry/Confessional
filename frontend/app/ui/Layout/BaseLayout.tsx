@@ -1,5 +1,7 @@
 import React from "react"
-import SideNav from "../Navs/SideNav"
+import { SideNav, TopNav } from "..";
+import { useModeContext } from "@/context/ModeContext";
+
 
 export interface IBaseLayout {
   children: React.ReactNode
@@ -7,11 +9,16 @@ export interface IBaseLayout {
 
 
 const BaseLayout = (props: IBaseLayout) => {
+  const { isDark } = useModeContext();
+
   return (
-    <div className="flex bg-gray-200">
-      <SideNav />
-      <div className="container m-3">
-        {props.children}
+    <div className={`${isDark ? "dark" : ""}`}>
+      <div className={`flex dark:bg-neutral-900 bg-gray-200`}>
+        <SideNav />
+        <div className="container m-3">
+          <TopNav />
+          {props.children}
+        </div>
       </div>
     </div>
   )
