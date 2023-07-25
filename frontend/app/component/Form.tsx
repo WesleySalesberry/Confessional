@@ -42,14 +42,10 @@ const Form = () => {
       })
       .catch(error => {
         setError(`Error while adding your confession:  ${error}`)
-        if (data.error) {
-          setError(data.error)
-        }
+
+        setError(error)
+
       })
-      .catch(error => {
-        setError(`Error while adding your confession:  ${error}`)
-        console.error(error);
-      });
   }
 
   const handleSubmit = (evt: { preventDefault: () => void; }) => {
@@ -58,6 +54,10 @@ const Form = () => {
     setTitle('')
     setBody('')
     setCategory('')
+
+    setTimeout(() => {
+      setMessage('')
+    }, 3000)
 
     setTimeout(() => {
       setMessage('')

@@ -2,7 +2,6 @@ import React from "react"
 import { SideNav, TopNav } from "..";
 import { useModeContext } from "@/app/context/ModeContext";
 
-
 export interface IBaseLayout {
   children: React.ReactNode
 }
