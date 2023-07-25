@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-import { BaseLayout, CardLayout, DisplayForm } from "../app/ui"
-import NoteCard, { CardProps } from "../app/ui/NoteCard"
+import { BaseLayout, CardLayout, DisplayForm } from "../ui"
+import NoteCard, { CardProps } from "../ui/NoteCard"
 import { useSearchContext } from '@/context/SearchContext';
 import { useUpdateContext } from "@/context/ComponentUpdateContext";
 
@@ -47,7 +47,9 @@ const Landing = () => {
     return (
       <BaseLayout>
         <DisplayForm />
-        No Confessions to display
+        <div className="text-center">
+          <p className="font-bold dark:text-violet-500">No {value} confessions to display</p>
+        </div>
       </BaseLayout>
     )
   }

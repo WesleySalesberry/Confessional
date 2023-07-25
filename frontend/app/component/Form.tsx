@@ -2,7 +2,7 @@
 import React, { useState } from "react"
 
 import { useUpdateContext } from "@/context/ComponentUpdateContext";
-import Data from '../app/ui/Form/Data.json';
+import Data from '../ui/Form/Data.json';
 import Message from "./Message";
 
 const Form = () => {
@@ -49,6 +49,10 @@ const Form = () => {
     setTitle('')
     setBody('')
     setCategory('')
+
+    setTimeout(() => {
+      setMessage('')
+    }, 3000)
   };
   return (
     <>
@@ -64,8 +68,8 @@ const Form = () => {
           :
           null
       }
-      <form onSubmit={handleSubmit} className="container bg-white py-2 px-2 rounded shadow-lg">
-        <div className="my-3 bg-white">
+      <form onSubmit={handleSubmit} className="container bg-white dark:bg-neutral-900 py-2 px-2 rounded shadow-lg">
+        <div className="my-3 bg-white rounded">
           <select
             value={category}
             onChange={(evt) => setCategory(evt.target.value)}
@@ -83,6 +87,7 @@ const Form = () => {
           </select>
         </div>
         <div>
+          <label htmlFor="title" className="leading-7 text-sm text-gray-900 dark:text-violet-700">Title</label>
           <input
             type="text"
             placeholder="Title"
@@ -91,8 +96,8 @@ const Form = () => {
             className="bg-white rounded border border-gray-500 py-2 px-4 focus:outline-none w-full"
           />
         </div>
-        <div>
-          <label htmlFor="confession" className="block border-b-2 ">Confession</label>
+        <div className="my-3">
+          <label htmlFor="confession" className="leading-7 text-sm text-gray-900 dark:text-violet-700">Confession</label>
           <textarea
             id="confession"
             placeholder="Leave Your Confession here"
@@ -104,7 +109,7 @@ const Form = () => {
         <div className="my-3">
           <button
             className={`font-bold py-3 px-3 rounded w-full border-2
-          ${title !== '' && body !== '' && category !== '' ? 'bg-sky-500 hover:bg-sky-700 cursor-pointer' : 'bg-gray-500 cursor-not-allowed'}`}
+          ${title !== '' && body !== '' && category !== '' ? 'bg-sky-500 hover:bg-sky-700 dark:bg-sky-700 dark:hover:bg-sky-500 cursor-pointer' : 'bg-gray-500 cursor-not-allowed'}`}
             disabled={category !== '' && title !== '' && body !== '' ? false : true}
           >
             Confess
