@@ -2,8 +2,6 @@
 import React, { useState } from "react"
 
 import { useUpdateContext } from "@/app/context/ComponentUpdateContext";
-
-import { useUpdateContext } from "@/app/context/ComponentUpdateContext";
 import Data from '../ui/Form/Data.json';
 import Message from "./Message";
 
@@ -42,8 +40,6 @@ const Form = () => {
 
         setMessage(data.data);
         updateState(true);
-        console.warn(data.error)
-        console.warn(data.error)
       })
       .catch(error => {
         setError(`Error while adding your confession:  ${error}`)
@@ -57,11 +53,6 @@ const Form = () => {
     setTitle('')
     setBody('')
     setCategory('')
-
-    setTimeout(() => {
-      setMessage('')
-      setError('')
-    }, 3000)
 
     setTimeout(() => {
       setMessage('')

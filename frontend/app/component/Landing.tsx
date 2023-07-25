@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BaseLayout, CardLayout, DisplayForm } from "../ui"
 import NoteCard, { CardProps } from "../ui/NoteCard"
-import { useSearchContext } from '@/context/SearchContext';
-import { useUpdateContext } from "@/context/ComponentUpdateContext";
+import { useSearchContext } from '@/app/context/SearchContext';
+import { useUpdateContext } from "@/app/context/ComponentUpdateContext";
 
 const Landing = () => {
   const { value } = useSearchContext();
@@ -28,16 +28,21 @@ const Landing = () => {
         <DisplayForm />
         <CardLayout>
           {
-            data.map((itm: CardProps) => (
-              <NoteCard
-                key={itm.id}
-                category={itm.category}
-                title={itm.title}
-                body={itm.body}
-                views={itm.views}
-                comments={itm.comments}
-              />
-            ))
+            !isLoading ?
+              data.map((itm: CardProps) => (
+                <NoteCard
+                  key={itm.id}
+                  category={itm.category}
+                  title={itm.title}
+                  body={itm.body}
+                  views={itm.views}
+                  comments={itm.comments}
+                />
+              ))
+              :
+              <>
+                <p>Content is loading</p>
+              </>
           }
 
         </CardLayout>
