@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { useUpdateContext } from "@/app/context/ComponentUpdateContext";
 
 import { useUpdateContext } from "@/app/context/ComponentUpdateContext";
+import { useUpdateContext } from "@/app/context/ComponentUpdateContext";
 import Data from '../ui/Form/Data.json';
 import Message from "./Message";
 
@@ -41,14 +42,17 @@ const Form = () => {
         if (data.error) {
           setError(data.error)
         }
+        if (data.error) {
+          setError(data.error)
+        }
         setMessage(data.data);
         updateState(true);
+        console.warn(data.error)
         console.warn(data.error)
         console.warn(data.error)
       })
       .catch(error => {
         setError(`Error while adding your confession:  ${error}`)
-        console.error(error);
         console.error(error);
       });
   }
@@ -62,7 +66,6 @@ const Form = () => {
 
     setTimeout(() => {
       setMessage('')
-      setError('')
       setError('')
     }, 3000)
   };
