@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react"
 
-import { useUpdateContext } from "@/context/ComponentUpdateContext";
+import { useUpdateContext } from "@/app/context/ComponentUpdateContext";
 import Data from '../ui/Form/Data.json';
 import Message from "./Message";
 
@@ -34,8 +34,12 @@ const Form = () => {
     })
       .then(response => response.json())
       .then(data => {
+        if (data.error) {
+          setError(data.error)
+        }
         setMessage(data.data);
         updateState(true);
+        console.warn(data.error)
       })
       .catch(error => {
         setError(`Error while adding your confession:  ${error}`)
@@ -52,6 +56,7 @@ const Form = () => {
 
     setTimeout(() => {
       setMessage('')
+      setError('')
     }, 3000)
 
     setTimeout(() => {
