@@ -39,6 +39,7 @@ const Form = () => {
         }
         setMessage(data.data);
         updateState(true);
+        console.warn(data.error)
       })
       .catch(error => {
         setError(`Error while adding your confession:  ${error}`)
