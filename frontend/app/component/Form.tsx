@@ -36,6 +36,7 @@ const Form = () => {
         if (data.error) {
           setError(data.error)
         }
+
         setMessage(data.data);
         updateState(true);
       })
