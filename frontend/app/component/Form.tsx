@@ -132,6 +132,6 @@ return (
         </form>
       </>
       )
-  }
+}
 
       export default Form;
