@@ -1,9 +1,9 @@
 import React from "react"
-import SearchContextProvider from '@/context/SearchContextProvider'
+import SearchContextProvider from '@/app/context/SearchContextProvider'
 import './globals.css'
 import type { Metadata } from 'next'
-import UpdateContextProvider from '@/context/UpdateProvider'
-import ModeContextProvider from "@/context/ModeContextProvider"
+import UpdateContextProvider from '@/app/context/UpdateProvider'
+import ModeContextProvider from "@/app/context/ModeContextProvider"
 // import { Inter } from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
