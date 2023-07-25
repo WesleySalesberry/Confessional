@@ -1,4 +1,4 @@
-import { useSearchContext } from '@/context/SearchContext';
+import { useSearchContext } from '@/app/context/SearchContext';
 import React from 'react';
 import { TfiThemifyFaviconAlt, TfiEye } from "react-icons/tfi";
 

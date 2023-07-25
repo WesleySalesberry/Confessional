@@ -1,6 +1,6 @@
 import React from "react"
 import NavData from './NavData.json'
-import { useSearchContext } from '@/context/SearchContext';
+import { useSearchContext } from '@/app/context/SearchContext';
 
 
 

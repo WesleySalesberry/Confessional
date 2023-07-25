@@ -3,7 +3,7 @@ import { Disclosure } from '@headlessui/react'
 import { MdClose, MdMenu } from "react-icons/md";
 import { FaMoon, FaSun } from "react-icons/fa6";
 import Link from 'next/link';
-import { useModeContext } from '@/context/ModeContext';
+import { useModeContext } from '@/app/context/ModeContext';
 
 const navigation = [
   { name: 'About', href: '#', current: true },
