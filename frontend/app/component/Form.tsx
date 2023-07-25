@@ -64,6 +64,11 @@ const Form = () => {
       setMessage('')
       setError('')
     }, 3000)
+
+    setTimeout(() => {
+      setMessage('')
+      setError('')
+    }, 3000)
   };
   return (
     <>

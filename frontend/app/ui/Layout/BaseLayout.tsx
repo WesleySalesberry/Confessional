@@ -14,6 +14,12 @@ const BaseLayout = (props: IBaseLayout) => {
         {props.children}
       </div>
     </div>
+    <div className="flex bg-gray-200">
+      <SideNav />
+      <div className="container m-3">
+        {props.children}
+      </div>
+    </div>
   )
 }
 
