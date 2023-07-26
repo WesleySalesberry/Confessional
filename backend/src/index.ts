@@ -2,6 +2,7 @@ import express from 'express';
 import { json, urlencoded } from 'body-parser';
 import dotenv from 'dotenv'
 import cors from 'cors'
+import morgan from "morgan"
 
 import helmet from "helmet";
 import hpp from 'hpp'
@@ -10,6 +11,7 @@ import mongoSanitize from 'express-mongo-sanitize'
 import db from '../db';
 
 const app = express();
+app.use(morgan('tiny'))
 app.use(json());
 app.use(urlencoded({ extended: true, limit: '1kb' }));
 dotenv.config();
