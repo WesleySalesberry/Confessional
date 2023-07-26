@@ -7,7 +7,7 @@ interface ISearchContext {
 
 export const SearchContext = createContext<ISearchContext>({
   value: '',
-  addValue(value) { }
+  addValue(value) { console.log(value) }
 });
 
 export const useSearchContext = () => useContext(SearchContext)
