@@ -1,6 +1,6 @@
 "use client"
 
-import { ReactNode, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { ModeContext } from "./ModeContext";
 
 interface IProviderProps {
