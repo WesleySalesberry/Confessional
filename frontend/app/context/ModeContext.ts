@@ -7,7 +7,7 @@ interface IModeContext {
 
 export const ModeContext = createContext<IModeContext>({
   isDark: false,
-  changeMode(value) { }
+  changeMode(value) { console.log(value) }
 });
 
 export const useModeContext = () => useContext(ModeContext)

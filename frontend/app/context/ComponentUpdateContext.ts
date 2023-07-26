@@ -7,7 +7,7 @@ interface IUpdateContext {
 
 export const UpdateContext = createContext<IUpdateContext>({
   isUpdated: false,
-  updateState(value) { }
+  updateState(value) { console.log(value) }
 });
 
 export const useUpdateContext = () => useContext(UpdateContext);

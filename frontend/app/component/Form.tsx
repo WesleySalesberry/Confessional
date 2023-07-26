@@ -119,12 +119,11 @@ const Form = () => {
           <button
             className={`font-bold py-3 px-3 rounded w-full border-2
           ${title !== '' && body !== '' && category !== '' ? 'bg-sky-500 hover:bg-sky-700 dark:bg-sky-700 dark:hover:bg-sky-500 cursor-pointer' : 'bg-gray-500 cursor-not-allowed'}`}
-            disabled={category !== '' && title !== '' && body !== '' ? false : true}
           >
             Confess
           </button>
         </div>
-      </form>
+      </form >
     </>
   )
 }
