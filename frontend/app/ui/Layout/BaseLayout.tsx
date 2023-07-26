@@ -7,11 +7,15 @@ export interface IBaseLayout {
 }
 
 const BaseLayout = (props: IBaseLayout) => {
+  const { isDark } = useModeContext();
+
   return (
-    <div className="flex bg-gray-200">
-      <SideNav />
-      <div className="container m-3">
-        {props.children}
+    <div className={`${isDark ? 'dark' : ''}`}>
+      <div className="flex bg-gray-200 dark:bg-stone-800">
+        <SideNav />
+        <div className="container m-3">
+          <TopNav />
+          {props.children}
         </div>
       </div>
     </div>
