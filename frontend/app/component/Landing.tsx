@@ -31,7 +31,8 @@ const Landing = () => {
             !isLoading ?
               data.map((itm: CardProps) => (
                 <NoteCard
-                  key={itm.id}
+                  key={itm._id}
+                  _id={itm._id}
                   category={itm.category}
                   title={itm.title}
                   body={itm.body}
