@@ -29,6 +29,11 @@ const ConfessionSchema = new Schema({
   },
   views: {
     type: Number
+  },
+  expireAt: {
+    type: Date,
+    default: Date.now,
+    index: { expires: '2592000' },
   }
 }, {
   timestamps: true
