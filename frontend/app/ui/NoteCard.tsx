@@ -28,7 +28,8 @@ const NoteCard = ({ _id, category, title, body, views, comments }: CardProps) =>
   return (
     <div
       key={_id}
-      className="flex flex-col bg-white dark:bg-stone-700 dark:text-sky-300 shadow-lg rounded-lg p-4 mx-2 my-4 md:w-96">
+      className="flex flex-col bg-white dark:bg-stone-700 dark:text-sky-300 shadow-lg rounded-lg p-4 mx-2 
+      my-2 md:w-96">
       <div className="hidden md:flex md:justify-between mb-2">
         <Link
           href={`/post/${_id}`}>
