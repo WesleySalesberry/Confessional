@@ -30,11 +30,7 @@ const ConfessionSchema = new Schema({
   views: {
     type: Number
   },
-  expireAt: {
-    type: Date,
-    default: Date.now,
-    index: { expires: '2592000' },
-  }
+
 }, {
   timestamps: true
 })
@@ -53,3 +49,9 @@ ConfessionSchema.pre('save', function (next) {
 const Confession = mongoose.model('Confession', ConfessionSchema)
 
 export default Confession
+
+// expireAt: {
+//   type: Date,
+//     default: Date.now,
+//     index: { expires: '2592000' },
+// }
