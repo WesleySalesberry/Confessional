@@ -30,6 +30,7 @@ const ConfessionSchema = new Schema({
   views: {
     type: Number
   },
+
 }, {
   timestamps: true
 })
