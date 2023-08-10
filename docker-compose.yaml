@@ -14,7 +14,7 @@ services:
     networks:
       - confessional-app
   mongo:
-    image: mongo:3.6.19-xenial
+    image: mongodb/mongodb-community-server:6.0-ubi8
     ports:
       - "27017:27017"
     networks:
