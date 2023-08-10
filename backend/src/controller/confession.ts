@@ -38,7 +38,7 @@ export const allConfessions = asyncHandler(async (req, res) => {
   const confessions = await Confession.find({ ...query })
     .limit(pageSize)
     .skip(pageSize * (page - 1))
-    .sort({ createdAt: -1 })
+    .sort({ views: -1, createdAt: -1 })
 
   res.status(200).json({
     success: true,
