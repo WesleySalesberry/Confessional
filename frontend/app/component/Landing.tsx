@@ -9,7 +9,7 @@ import Pagination from "../ui/Pagination";
 
 const Landing = () => {
   const { value } = useSearchContext();
-  const { isUpdated } = useUpdateContext();
+  const { isUpdated, updateState } = useUpdateContext();
   const [data, setData] = useState<CardProps[]>([])
   const [currentPage, setCurrentPage] = useState<number>(0)
   const [pages, setPages] = useState<number>(0)
@@ -24,6 +24,7 @@ const Landing = () => {
         setCurrentPage(data.page)
         setPages(data.pages)
         setLoading(false)
+        updateState(false)
       })
   }, [value, isUpdated, currentPage])
 
