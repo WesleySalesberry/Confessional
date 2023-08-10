@@ -9,7 +9,7 @@ import asyncHandler from 'express-async-handler'
  */
 export const allConfessions = asyncHandler(async (req, res) => {
   const { search, category, pageNumber } = req.query
-  const pageSize = 12;
+  const pageSize = 9;
   const page = Number(pageNumber) || 1
 
   let query: any;
@@ -38,11 +38,12 @@ export const allConfessions = asyncHandler(async (req, res) => {
   const confessions = await Confession.find({ ...query })
     .limit(pageSize)
     .skip(pageSize * (page - 1))
-    .sort({ createdAt: -1 })
+    .sort({ views: -1, createdAt: -1 })
 
   res.status(200).json({
     success: true,
-    count: count,
+    page: page,
+    pages: Math.ceil(count / pageSize),
     data: confessions
   })
 

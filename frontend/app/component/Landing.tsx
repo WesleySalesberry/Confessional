@@ -5,22 +5,32 @@ import { BaseLayout, CardLayout, DisplayForm } from "../ui"
 import NoteCard, { CardProps } from "../ui/NoteCard"
 import { useSearchContext } from '@/app/context/SearchContext';
 import { useUpdateContext } from "@/app/context/ComponentUpdateContext";
+import Pagination from "../ui/Pagination";
 
 const Landing = () => {
   const { value } = useSearchContext();
-  const { isUpdated } = useUpdateContext();
+  const { isUpdated, updateState } = useUpdateContext();
   const [data, setData] = useState<CardProps[]>([])
+  const [currentPage, setCurrentPage] = useState<number>(0)
+  const [pages, setPages] = useState<number>(0)
   const [isLoading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     setLoading(true)
-    fetch(`http://localhost:3001/api/v1/confession?category=${value}`)
+    fetch(`http://localhost:3001/api/v1/confession?category=${value}&pageNumber=${currentPage}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data.data)
+        setCurrentPage(data.page)
+        setPages(data.pages)
         setLoading(false)
+        updateState(false)
       })
-  }, [value, isUpdated])
+  }, [value, isUpdated, currentPage])
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+  }
 
   if (data.length > 0) {
     return (
@@ -47,6 +57,11 @@ const Landing = () => {
           }
 
         </CardLayout>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={pages}
+          onPageChange={handlePageChange}
+        />
       </BaseLayout>
     )
   } else {

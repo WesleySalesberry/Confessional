@@ -6,15 +6,10 @@ import Link from 'next/link';
 import { useModeContext } from '@/app/context/ModeContext';
 
 const navigation = [
-  { name: 'About', href: '#', current: true },
-  { name: 'Privacy', href: '#', current: false },
-  { name: 'Contact', href: '#', current: false },
-  { name: 'Github', href: '#', current: false },
+  { name: 'Home', href: '/', current: true },
+  { name: 'About', href: '/about', current: true },
+  { name: 'Privacy', href: '/privacy', current: true },
 ]
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
 
 const TopNav = () => {
   const { isDark, changeMode } = useModeContext();
@@ -38,11 +33,11 @@ const TopNav = () => {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  {/* <Image
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  /> */}
+                  <h1
+                    className="px-3 py-2 text-xlg font-large"
+                  >
+                    The Confessional
+                  </h1>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -50,10 +45,7 @@ const TopNav = () => {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className={classNames(
-                          item.current ? 'text-black dark:text-sky-500' : 'text-black dark:text-sky-300 hover:bg-gray-300 hover:text-black dark:hover:bg-zinc-700',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
+                        className={`rounded-md px-3 py-2 text-sm font-medium ${item.current ? 'text-black dark:text-sky-500' : 'text-black dark:text-sky-300 hover:bg-gray-300 hover:text-black dark:hover:bg-zinc-700'}`}
                         aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
@@ -93,10 +85,7 @@ const TopNav = () => {
                   key={item.name}
                   as="a"
                   href={item.href}
-                  className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium dark:text-sky-500'
-                  )}
+                  className={`block rounded-md px-3 py-2 text-base font-medium dark:text-sky-500 ${item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
                   aria-current={item.current ? 'page' : undefined}
                 >
                   {item.name}
