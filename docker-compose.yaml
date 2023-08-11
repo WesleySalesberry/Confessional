@@ -1,19 +1,25 @@
-version: "2"
+version: "3"
 services:
   frontend:
+    restart: always
+    build:
+      context: ./frontend
     image: frontend
-    stdin_open: true
     ports:
       - "3000:3000"
     networks:
       - confessional-app
   backend:
+    restart: always
+    build:
+      context: ./backend
     image: backend
     ports:
       - "3001:3001"
     networks:
       - confessional-app
   mongo:
+    restart: always
     image: mongodb/mongodb-community-server:6.0-ubi8
     ports:
       - "27017:27017"
