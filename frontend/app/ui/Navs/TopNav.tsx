@@ -80,16 +80,15 @@ const TopNav = () => {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={`block rounded-md px-3 py-2 text-base font-medium dark:text-sky-500 ${item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
-                  aria-current={item.current ? 'page' : undefined}
+              {navigation.map((itm) => (
+                <Link
+                  key={itm.name}
+                  href={itm.href}
+                  className={`block rounded-md px-3 py-2 text-base font-medium dark:text-sky-500 ${itm.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
+                  aria-current={itm.current ? 'page' : undefined}
                 >
-                  {item.name}
-                </Disclosure.Button>
+                  {itm.name}
+                </Link>
               ))}
             </div>
           </Disclosure.Panel>
