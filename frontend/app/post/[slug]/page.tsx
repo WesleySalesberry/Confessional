@@ -26,12 +26,12 @@ export default function Page() {
 
   return (
     <BaseLayout>
-      <section className='container bg-white dark:bg-stone-600 rounded'>
+      <section className='container bg-white dark:bg-gray-800 dark:text-gray-300 rounded'>
         <div
           className="my-2 mx-2 py-2 px-2"
         >
           <p
-            className="w-20 py-2 px-2 text-sky-500 bg-slate-600 dark:text-sky-500 hover:text-sky-300 dark:hover:text-sky-300 rounded cursor-pointer"
+            className="w-20 py-2 px-2 text-sky-500 bg-slate-600 dark:text-gray-300 hover:text-sky-300 dark:hover:text-sky-300 rounded cursor-pointer"
             onClick={() => route.back()}
           >
             Go Back
@@ -39,13 +39,13 @@ export default function Page() {
         </div>
         <div className="w-1/2 p-4 mx-auto text-center border-b-2 border-sky-300">
           <h1
-            className="font-bold text-2xl text-center text-black dark:text-sky-500"
+            className="font-bold text-2xl text-center text-black dark:text-gray-300"
           >
             {data?.title}
           </h1>
         </div>
         <div className="w-1/2 p-4 mx-auto text-center">
-          <p className="text-base text-center text-black dark:text-sky-500">{data?.body}</p>
+          <p className="text-base text-center text-black dark:text-gray-300">{data?.body}</p>
         </div>
         <div className="flex justify-between items-center my-5 mx-5 text-gray-500">
           <div className="flex items-center">

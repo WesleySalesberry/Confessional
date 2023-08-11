@@ -81,7 +81,7 @@ const Form = () => {
           <select
             value={category}
             onChange={(evt) => setCategory(evt.target.value)}
-            className="bg-white rounded border border-gray-500 py-2 px-4 focus:outline-none w-full"
+            className="bg-white dark:text-white dark:bg-gray-800 rounded border border-gray-500 py-2 px-4 focus:outline-none w-full"
           >
             <option>Categories</option>
             {Data.map((itm) => (
@@ -95,24 +95,28 @@ const Form = () => {
           </select>
         </div>
         <div>
-          <label htmlFor="title" className="leading-7 text-sm text-gray-900 dark:text-violet-700">Title</label>
-          <label htmlFor="title" className="leading-7 text-sm text-gray-900 dark:text-violet-700">Title</label>
+          <label htmlFor="title" className="leading-7 text-sm text-gray-900 dark:text-white">Title</label>
           <input
             type="text"
             placeholder="Title"
             value={title}
             onChange={(evt) => setTitle(evt.target.value)}
-            className="bg-white rounded border border-gray-500 py-2 px-4 focus:outline-none w-full"
+            className="bg-white rounded border border-gray-500 dark:text-white dark:bg-gray-800 py-2 px-4 focus:outline-none w-full"
           />
         </div>
         <div className="my-3">
-          <label htmlFor="confession" className="leading-7 text-sm text-gray-900 dark:text-violet-700">Confession</label>
+          <label
+            htmlFor="confession"
+            className="leading-7 text-sm text-gray-900 dark:text-white"
+          >
+            Confession
+          </label>
           <textarea
             id="confession"
             placeholder="Leave Your Confession here"
             value={body}
             onChange={(evt) => setBody(evt.target.value)}
-            className="bg-white rounded border border-gray-500 w-full p-2"
+            className="bg-white rounded border border-gray-500 dark:text-white dark:bg-gray-800 w-full p-2"
           />
         </div>
         <div className="my-3">

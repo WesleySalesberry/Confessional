@@ -11,7 +11,7 @@ const BaseLayout = (props: IBaseLayout) => {
 
   return (
     <div className={`${isDark ? 'dark' : ''}`}>
-      <div className="flex bg-gray-200 dark:bg-stone-800">
+      <div className="flex bg-gray-200 dark:bg-gray-950 h-screen">
         <SideNav />
         <div className="container m-3">
           <TopNav />
