@@ -1,4 +1,5 @@
 import React from 'react';
+import { usePathname } from 'next/navigation'
 import { Disclosure } from '@headlessui/react'
 import { MdClose, MdMenu } from "react-icons/md";
 import { FaMoon, FaSun } from "react-icons/fa6";
@@ -12,6 +13,8 @@ const navigation = [
 ]
 
 const TopNav = () => {
+  const pathname = usePathname();
+  console.log(pathname)
   const { isDark, changeMode } = useModeContext();
 
   return (
@@ -25,16 +28,16 @@ const TopNav = () => {
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 focus:outline-none">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <MdClose className="block h-6 w-6 text-black dark:text-sky-300" aria-hidden="true" />
+                    <MdClose className="block h-6 w-6 text-black dark:text-white" aria-hidden="true" />
                   ) : (
-                    <MdMenu className="block h-6 w-6 text-black dark:text-sky-300" aria-hidden="true" />
+                    <MdMenu className="block h-6 w-6 text-black dark:text-white" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <h1
-                    className="px-3 py-2 text-xlg font-large"
+                    className="px-3 py-2 text-xlg font-large dark:text-white"
                   >
                     The Confessional
                   </h1>
@@ -45,7 +48,7 @@ const TopNav = () => {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className={`rounded-md px-3 py-2 text-sm font-medium ${item.current ? 'text-black dark:text-sky-500' : 'text-black dark:text-sky-300 hover:bg-gray-300 hover:text-black dark:hover:bg-zinc-700'}`}
+                        className={`rounded-md px-3 py-2 text-sm font-medium ${item.href === pathname ? 'text-black bg-gray-300 dark:text-sky-500 dark:bg-zinc-700' : 'text-black dark:text-white hover:bg-gray-300 hover:text-black dark:hover:bg-zinc-700'}`}
                         aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
@@ -80,16 +83,15 @@ const TopNav = () => {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={`block rounded-md px-3 py-2 text-base font-medium dark:text-sky-500 ${item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
-                  aria-current={item.current ? 'page' : undefined}
+              {navigation.map((itm) => (
+                <Link
+                  key={itm.name}
+                  href={itm.href}
+                  className={`block rounded-md px-3 py-2 text-base font-medium dark:text-sky-500 ${itm.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`}
+                  aria-current={itm.current ? 'page' : undefined}
                 >
-                  {item.name}
-                </Disclosure.Button>
+                  {itm.name}
+                </Link>
               ))}
             </div>
           </Disclosure.Panel>

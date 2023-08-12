@@ -14,7 +14,7 @@ const SideNav = () => {
           NavData.map(itm => (
             <li
               key={itm.value}
-              className="px-4 py-2 font-bold cursor-pointer hover:text-black hover:bg-sky-300 dark:hover:bg-zinc-700"
+              className="px-4 py-2 font-bold cursor-pointer hover:text-black dark:text-white dark:hover:text-sky-500 hover:bg-sky-300 dark:hover:bg-zinc-700"
               onClick={() => addValue(itm.value)}
             >
               {itm.title}
