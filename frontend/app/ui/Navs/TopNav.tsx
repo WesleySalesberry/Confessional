@@ -14,7 +14,6 @@ const navigation = [
 
 const TopNav = () => {
   const pathname = usePathname();
-  console.log(pathname)
   const { isDark, changeMode } = useModeContext();
 
   return (
@@ -36,11 +35,16 @@ const TopNav = () => {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <h1
-                    className="px-3 py-2 text-xlg font-large dark:text-white"
+                  <Link
+                    href={`/`}
                   >
-                    The Confessional
-                  </h1>
+                    <h1
+                      className="px-3 py-2 text-xlg font-large dark:text-white"
+                    >
+                      The Confessional
+                    </h1>
+                  </Link>
+
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
