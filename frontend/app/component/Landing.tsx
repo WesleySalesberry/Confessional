@@ -26,7 +26,7 @@ const Landing = () => {
         setLoading(false)
         updateState(false)
       })
-  }, [value, isUpdated, currentPage])
+  }, [value, isUpdated, currentPage, updateState])
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)

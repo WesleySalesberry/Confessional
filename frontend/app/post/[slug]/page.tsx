@@ -13,8 +13,6 @@ export default function Page() {
   const [data, setData] = useState<CardProps>()
   const { slug } = useParams();
 
-  console.log(slug)
-
   useEffect(() => {
     fetch(`http://localhost:3001/api/v1/confession/${slug}`)
       .then((res) => res.json())
@@ -22,7 +20,7 @@ export default function Page() {
         setData(data.data)
         console.log(data)
       })
-  }, [])
+  }, [slug])
 
   return (
     <BaseLayout>

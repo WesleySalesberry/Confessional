@@ -18,7 +18,8 @@ const NoteCard = ({ _id, category, title, body, views, comments }: CardProps) =>
   const limitTextToWords = (text: string, wordCount: number) => {
     const words = text.split(' ');
     if (words.length > wordCount) {
-      return words.slice(0, wordCount).join(' ') + '...';
+      return words.slice(0, wordCount).join(' ') + '...'
+
     }
     return text;
   };
@@ -33,7 +34,7 @@ const NoteCard = ({ _id, category, title, body, views, comments }: CardProps) =>
       my-2 md:w-96">
       <div className="hidden md:flex md:justify-between mb-2">
         <Link
-          href={`/post/${_id}`}>
+          href={`/post/${encodeURIComponent(_id)}`}>
           <h2 className="text-lg font-semibold mr-2">{title}</h2>
         </Link>
 
@@ -54,6 +55,12 @@ const NoteCard = ({ _id, category, title, body, views, comments }: CardProps) =>
         </div>
       </div>
       <p className="text-gray-700 dark:text-gray-300 mb-4">{limitedBody}</p>
+      <Link
+        href={`/post/${encodeURIComponent(_id)}`}
+        className="text-lg font-semibold mr-2"
+      >
+        Read More
+      </Link>
       <div className="flex justify-between items-center text-gray-500">
         <div className="flex items-center">
           <TfiEye
