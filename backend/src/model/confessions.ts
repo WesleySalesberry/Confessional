@@ -1,8 +1,9 @@
 import mongoose from 'mongoose'
+import { IConfession } from '../../interfaces/confess'
 
 const Schema = mongoose.Schema
 
-const ConfessionSchema = new Schema({
+const ConfessionSchema = new Schema<IConfession>({
   confession_id: {
     type: String
   },
@@ -36,6 +37,6 @@ const ConfessionSchema = new Schema({
   timestamps: true
 })
 
-const Confession = mongoose.model('Confession', ConfessionSchema)
+const Confession = mongoose.model<IConfession>('Confession', ConfessionSchema)
 
 export default Confession

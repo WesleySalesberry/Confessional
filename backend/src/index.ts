@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import { json, urlencoded } from 'body-parser';
 import dotenv from 'dotenv'
 import cors from 'cors'
@@ -38,6 +38,12 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 import confessions from './route/confession'
 
 app.use('/api/v1/confession', confessions)
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong');
+});
+
 
 app.listen(
   PORT, () =>

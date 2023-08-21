@@ -1,3 +1,4 @@
+import { Request, Response } from 'express';
 import Confession from '../model/confessions'
 import asyncHandler from 'express-async-handler'
 
@@ -7,7 +8,7 @@ import asyncHandler from 'express-async-handler'
  * @route  GET /api/v1/confession
  * @access Public
  */
-export const allConfessions = asyncHandler(async (req, res) => {
+export const allConfessions = asyncHandler(async (req: Request, res: Response) => {
   const { search, category, pageNumber } = req.query
   const pageSize = 9;
   const page = Number(pageNumber) || 1
@@ -54,7 +55,7 @@ export const allConfessions = asyncHandler(async (req, res) => {
  * @route  GET /api/v1/confession
  * @access Public
  */
-export const getConfession = asyncHandler(async (req, res) => {
+export const getConfession = asyncHandler(async (req: Request, res: Response) => {
   await Confession.findByIdAndUpdate({ _id: req.params.id }, {
     $inc: { views: 1 }
   }, { new: true });
@@ -72,7 +73,7 @@ export const getConfession = asyncHandler(async (req, res) => {
  * @route  GET /api/v1/confession
  * @access Public
  */
-export const createConfession = asyncHandler(async (req, res) => {
+export const createConfession = asyncHandler(async (req: Request, res: Response) => {
   req.body.confession_id = Math.random().toString(36).substr(2, 10)
   await Confession.create(req.body)
 
