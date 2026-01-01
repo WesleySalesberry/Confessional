@@ -10,11 +10,11 @@ const postLimiter = postLimit({
   legacyHeaders: false,
   message: {
     status: 429,
-    error: 'You are doing that too much. Please try again in 5 minutes.'
+    error: 'You are doing that too much. Please try again later.'
   }
 })
 
-import { allConfessions, createConfession, getConfession } from '../controller/confession'
+import { allConfessions, createConfession, getConfession } from '../controller/confession.js'
 
 router.route('/')
   .get(allConfessions)

@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
-import Confession from '../model/confessions'
+import Confession from '../model/confessions.js'
+import View from '../model/views.js'
 import asyncHandler from 'express-async-handler'
+import express, { Request, Response } from 'express';
 
 /**
  * @desc   Get confessions ether by searching or category
@@ -56,9 +57,22 @@ export const allConfessions = asyncHandler(async (req: Request, res: Response) =
  * @access Public
  */
 export const getConfession = asyncHandler(async (req: Request, res: Response) => {
-  await Confession.findByIdAndUpdate({ _id: req.params.id }, {
-    $inc: { views: 1 }
-  }, { new: true });
+
+  const exist = await View.exists({ address: req.ip, c_id: req.params.id })
+
+  if (!exist) {
+    // const body = {
+    //   c_id: req.params.id,
+    //   address: req.ip,
+    // }
+    await View.create({
+      c_id: req.params.id,
+      address: req.ip,
+    })
+    await Confession.findByIdAndUpdate({ _id: req.params.id }, {
+      $inc: { views: 1 }
+    }, { new: true });
+  }
 
   const confession = await Confession.findByIdAndUpdate({ _id: req.params.id })
 
@@ -74,7 +88,7 @@ export const getConfession = asyncHandler(async (req: Request, res: Response) =>
  * @access Public
  */
 export const createConfession = asyncHandler(async (req: Request, res: Response) => {
-  req.body.confession_id = Math.random().toString(36).substr(2, 10)
+  req.body.confession_id = Math.random().toString(36).substring(2, 10)
   await Confession.create(req.body)
 
   res.status(200).json({

@@ -1,55 +1,93 @@
 import express, { Request, Response, NextFunction } from 'express';
-import { json, urlencoded } from 'body-parser';
-import dotenv from 'dotenv'
-import cors from 'cors'
-import morgan from "morgan"
+import dotenv from 'dotenv';
+import cors from 'cors';
+import morgan from 'morgan';
+import helmet from 'helmet';
+import hpp from 'hpp';
+import mongoSanitize from 'express-mongo-sanitize';
 
-import helmet from "helmet";
-import hpp from 'hpp'
-import mongoSanitize from 'express-mongo-sanitize'
+import db from './db/index.js';
+import confessions from './route/confession.js';
 
-import db from '../db';
+/* ------------------------ */
+/* Environment & App Setup */
+/* ------------------------ */
+
+dotenv.config();
 
 const app = express();
-app.use(morgan('tiny'))
-app.use(json());
-app.use(urlencoded({ extended: true, limit: '1kb' }));
-dotenv.config();
-app.use(hpp());
+
+/* ------------------------ */
+/* Database */
+/* ------------------------ */
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+/* ------------------------ */
+/* Express Settings */
+/* ------------------------ */
+
+app.set('trust proxy', true);
+
+app.use(express.json({ limit: '1kb' }));
+app.use(express.urlencoded({ extended: true }));
+
+/* ------------------------ */
+/* Security Middleware */
+/* ------------------------ */
+
 app.use(helmet());
-
-var corsOptions = {
-  origin: 'http://localhost:3000',
-  methods: ['GET', 'POST']
-}
-
-app.use(cors(corsOptions));
+app.use(hpp());
 
 app.use(
   mongoSanitize({
     replaceWith: '_',
-  }),
+  })
 );
 
-const PORT = 3001 || 4001
+/* ------------------------ */
+/* CORS */
+/* ------------------------ */
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+app.use(
+  cors({
+    methods: ['GET', 'POST'],
+  })
+);
 
-import confessions from './route/confession'
+/* ------------------------ */
+/* Logging */
+/* ------------------------ */
 
-app.use('/api/v1/confession', confessions)
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('tiny'));
+} else {
+  app.use(morgan('combined'));
+}
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+/* ------------------------ */
+/* Routes */
+/* ------------------------ */
+
+app.use('/api/v1/confession', confessions);
+
+/* ------------------------ */
+/* Error Handling */
+/* ------------------------ */
+
+app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
   console.error(err.stack);
-  res.status(500).send('Something went wrong');
+  res.status(500).json({ message: 'Internal Server Error' });
 });
 
+/* ------------------------ */
+/* Server */
+/* ------------------------ */
 
-app.listen(
-  PORT, () =>
+const PORT = Number(process.env.PORT) || 3001;
+
+app.listen(PORT, () => {
   console.log(
-    `> Server running in development mode on: http://localhost:${PORT}`
-  )
-)
-
-
+    `> Server running in ${process.env.NODE_ENV ?? 'development'} mode on http://localhost:${PORT}`
+  );
+});

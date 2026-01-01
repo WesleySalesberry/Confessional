@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { IConfession } from '../../interfaces/confess'
+import { IConfession } from '../interfaces/confess.js'
 
 const Schema = mongoose.Schema
 

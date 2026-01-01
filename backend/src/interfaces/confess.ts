@@ -6,3 +6,9 @@ export interface IConfession {
   views?: number
   expireAt: Date
 }
+
+export interface IViews {
+  c_id: string,
+  address: string,
+  expireAt: Date
+}
